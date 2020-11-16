@@ -16,7 +16,7 @@ If you are an absolute novice – start with [introduction to Data Engineering]
 
 If you already decided to learn data engineering, but don't know where to start – head on to the [Data Engineering roadmap](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md). There I show three paths you can take, from absolute beginner to advanced levels.
 
-Lastly, check the [table of content](#table-of-content) down below.
+Lastly, check the [table of content](#table-of-content) down below and find the most interesting topics for you.
 
 ## Table of content
 
@@ -34,9 +34,9 @@ If you have any feedback or other questions, please refer to [this form](https:/
 
 ## About me
 
-My name Oleg Agapov and I'm a data analyst. 
+My name is **Oleg Agapov** and I'm a data analyst.
 
-I work with data, analytics, engineering and sometimes magic :)
+I work with data, analytics, engineering and sometimes magic ✨
 
 **Twitter**: [@oleg_agapov_88](https://twitter.com/oleg_agapov_88)
 
