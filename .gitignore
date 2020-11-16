@@ -1,0 +1,7 @@
+.DS_Store
+.vscode
+/tools
+.ipynb_checkpoints
+/book/2-beginner-path
+/book/3-big-data-path
+/book/4-data-architect-path
