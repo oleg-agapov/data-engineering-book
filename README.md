@@ -21,8 +21,8 @@ Lastly, check the [table of content](#table-of-content) down below.
 ## Table of content
 
 1. [Introduction to Data Engineering](./book/1-introduction-to-data-engineering/README.md)
-    1. Introduction to Data Engineering
-    2. Data Engineering Roadmap
+    1. [What is Data Engineering?](./book/1-introduction-to-data-engineering/1.1-what-is-data-engineering.md)
+    2. [Data Engineering Roadmap?](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md)
 2. Beginner path
 3. Big Data path
 4. Data Architect path
