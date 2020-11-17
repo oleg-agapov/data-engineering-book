@@ -6,7 +6,7 @@
 
 ## About this book
 
-The book is obviously about Data Engineering :)
+The book covers different aspects of Data Engineering, from basic topics like databases, SQL and ETL to advanced like data architecture and Big Data stacks.
 
 But it is still under development. It has no strict set of topics I want to cover, but it will be pretty close to what I've described in my [Data Engineering Roadmap](/book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md).
 
@@ -16,7 +16,7 @@ If you are an absolute novice – start with [introduction to Data Engineering]
 
 If you already decided to learn data engineering, but don't know where to start – head on to the [Data Engineering roadmap](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md). There I show three paths you can take, from absolute beginner to advanced levels.
 
-Lastly, check the [table of content](#table-of-content) down below and find the most interesting topics for you.
+Lastly, if you know what exactly you want to learn then head to the [table of content](#table-of-content) down below and find the most interesting topics for you.
 
 ## Table of content
 
@@ -32,13 +32,13 @@ Lastly, check the [table of content](#table-of-content) down below and find the 
 If you have any feedback or other questions, please refer to [this form](https://docs.google.com/forms/d/e/1FAIpQLSeYSxyQcNyXIyQeD1DtR6q2zHO7heGGUQ36PqW--XdRL01Wqg/viewform).
 
 
-## About me
+## About author
 
 My name is **Oleg Agapov** and I'm a data analyst.
 
 I work with data, analytics, engineering and sometimes magic ✨
 
-**Twitter**: [@oleg_agapov_88](https://twitter.com/oleg_agapov_88)
+**twitter**: [@oleg_agapov_88](https://twitter.com/oleg_agapov_88)
 
 ## License
 
