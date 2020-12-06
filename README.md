@@ -18,6 +18,10 @@ If you already decided to learn data engineering, but don't know where to start 
 
 Lastly, if you know what exactly you want to learn then head to the [table of content](#table-of-content) down below and find the most interesting topics for you.
 
+## Updates
+- `2020-12-06`: Added section [Useful resources for Data Engineers](./book/1-introduction-to-data-engineering/1.3-useful-resources.md)
+- `2020-11-16`: First section [Intro to Data Engineering](./book/1-introduction-to-data-engineering/README.md) released
+
 ## Table of content
 
 1. [Introduction to Data Engineering](./book/1-introduction-to-data-engineering/README.md)
