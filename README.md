@@ -42,7 +42,7 @@ My name is **Oleg Agapov** and I'm a data analyst.
 
 I work with data, analytics, engineering and sometimes magic ✨
 
-**twitter**: [@oleg_agapov_88](https://twitter.com/oleg_agapov_88)
+**twitter**: [@oleg_agapov_](https://twitter.com/oleg_agapov_)
 
 ## License
 
