@@ -4,9 +4,9 @@
 
 ## Foreword
 
-In this chapter we are going to talk about **databases**. Let's discuss the application of databases, obstacles you may have while working with them and important aspects you should know as a data engineer.
+In this chapter we are going to talk about **databases**. Let's discuss the application of databases, issues you may have while working with them and important aspects you should know as a data engineer.
 
-It is probably impossible to know all _aspects of databases_, but as a technical specialist you need to know about their existence. It is especially important to know database theory in cases of specific problems. Broad knowledge will give you an advantage when solving such problems.
+It is probably impossible to know _all aspects of databases_, but as a technical specialist you need to know about their _existence_. It is especially important to know a database theory in cases of specific problems. Broad knowledge will give you an _advantage_ when solving such problems.
 
 The following _questions_ may appear while working with databases:
 - Which database is the best for my data?
@@ -172,9 +172,10 @@ When using indexes pay attention to the following:
 When you submit a query, it goes not directly to database, but rather to a layer called **query planner**. The query planner has a table of costs for each operation, in other words "_how costly it will be to use this or that operation_". So it takes your query, looks inside and check what tables and fields you want to use. Based on this information it builds several plans of execution, and then check their "costs". Most of the databases have commands `EXPLAIN` and `EXPLAIN ANALYZE`. They will show you how DB will perform your query.
 
 ```
--> EXPLAIN SELECT * FROM orders WHERE id > 100
--> UNION 
--> SELECT * FROM refunds WHERE id <> 100
+->  EXPLAIN SELECT * FROM orders WHERE id > 100
+... UNION 
+... SELECT * FROM refunds WHERE id <> 100
+
 +----+------------+------------------+----------+-----+-------------+-------+-------+----+--------+--------+---------------+
 |id  |select_type |table             |partitions|type |possible_keys|key    |key_len|ref |rows    |filtered|Extra          |
 +----+------------+------------------+----------+-----+-------------+-------+-------+----+--------+--------+---------------+
@@ -363,9 +364,9 @@ There could be a use case, when main DB is working in OLTP mode (to ensure non-b
 
 ### Architectures
 
-<img src="img/fig-18.png" alt="Master-Slave architecture"/>
-
 Architecture with replicas usually follows **Master-Slave architecture**. It means that there is a **master node** and one or several **slave node(s)** (sometimes called _replicas_ or _followers_).
+
+<img src="img/fig-18.png" alt="Master-Slave architecture"/>
 
 In such architecture, all applications are communicating with master node, all transactions are happening on this node. This node write all changes to the journal and send this journal to all slave nodes. Slave nodes don't accept changes from users, but only from master (in a form of a journal). After receiving the journal, slaves apply changes from it and get the same state as master has.
 
