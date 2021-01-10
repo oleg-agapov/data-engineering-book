@@ -41,43 +41,43 @@ On a very high level, there are two major types of databases: **relational** and
 
 **Relational databases** are databases which use relational model of data invented in 1970th. They use **relational database management systems** (RDBMS) to maintain a database and support (most of them) **SQL** (Structured Query Language) for managing the data.
 
-In contrast, **non-relational databases** don't follow relational model (though they may use some parts of it) and have a special internal representation of the data. Because of variety of ways of storing the data, there is a variety of non-relational databases categories. Some of them we will discuss later in the chapter.
+In contrast, **non-relational databases** don't follow relational model (though they may use some parts of it) and have a special internal representation of the data. Because of variety of ways of storing the data, there is a variety of categories of non-relational databases. Some of them we will discuss later in the chapter.
 
 ### Why not store data in files?
 
 Before going any further, let's briefly answer a simple question: why not store our data in files instead of a database?
 
-Main reason of choosing a database over simple files is the **complexity** of such solution. From the first sight it seems that working with files is not a big deal, just write row-by-row to some file and the job is done. 
+Main reason of choosing a database over simple files is the **complexity** of such solution. From the first sight it seems that working with files is not a big deal: just write row-by-row to a file and the job is done.
 
 But if you explore more, you will find a lot of issues with files:
 
-1. Files usually have very little or no **metadata** (or data about the data). And each user of this file will have to deal with understanding of what is going on inside the file.
-2. Many clients will require **parallel read/write**. It is hard to achieve with files.
-3. **Changing the structure** of the data is a pain. You may break back-compatibility with older versions of the clients. For example, will your application work correctly if you change a data type of some field?
-4. **Access and searching** problems. Random access is a requirement when you need to find and read/change/delete some specific part of the data (for example information about a customer). A search will be very slow and inefficient with files.
+1. Files usually have very little or no **metadata** (or data about the data). And everyone who is using such file will have to deal with understanding of what is going on inside the file.
+2. Many users of the data will require **parallel read/write**. It is hard to achieve using files.
+3. **Changing the structure** of the data is a pain. You may break back-compatibility with older versions of the clients (users of the dara). For example, will your application work correctly if you change a data type of some field?
+4. **Access and searching** problems. Random access is a requirement when you need to find and read/change/delete specific part of the data. A search will be very slow and inefficient with files.
 
-There are cases when _files could be a way_ of storing data (for example in architectures called [Data Lake](https://en.wikipedia.org/wiki/Data_lake)). But in most cases, standard databases will be used.
+There are cases when _files could be a way_ of storing data (for example in architectures called [Data Lakes](https://en.wikipedia.org/wiki/Data_lake)). But in most cases, traditional databases will be used.
 
 ## Relational model
 
-Now let's talk how to structure our data.
+Now let's talk about how to structure our data.
 
-First very obvious data structure is a relational model. It represents data as **tables** and **relations** among those tables.
+First very obvious data structure is a **relational model**. It represents data as **tables** and **relations** among those tables.
 
 Every row in the table called a **record**, every column is called a **field**.
 
 <img height="200" src="img/fig-1.png"/>
 
-Now let's discuss a bit how we can fit out data in the relational model. And I'd like to start from the example. Imagine that you have an online electronics store and you are saving every purchase to the table called "Purchase log". You want to store the purchase date, customer's name, purchased products and total price. Suppose you have an Excel file with such information:
+Now let's discuss a bit how we can fit out data into relational model. And I'd like to start from the example. Imagine that you have an online electronics store and you are saving every purchase to the table called "Purchase log". You want to store the date of purchase, customer's name, purchased products and total price. Suppose you have an Excel file with such information:
 
 <img src="img/fig-2.png" alt="Example of non-normalized data"/>
 
 There are a few problems with such representation:
-1. **problems with updating the data**. For example, is customer John Smith will want to change his email, you will have to find and replace all occurrences of existing email and replace with a new value. It is probably not a problem if you have 1,000 rows, but what if you have 10 millions?
-2. **problems with extracting the data**. First order in the table has two items in the cart and its total price. From such information it is not clear what is the price of _each item_, was any item purchased _with discount_, no easy way to count _total number of items_ in the cart, etc.
-3. **problems with removing data**. Once again let's consider first order with two items. What if customer decided to return one item, what should we do? Remove it from the first row? Or implement a special status with a new row for refunded products?
+1. **problems with updating the data**. For example, if customer John Smith will want to change his email, you will need to find and replace all occurrences of existing email and replace with a new value. It is probably not a problem if you have 1,000 rows, but what if you have 10 millions?
+2. **problems with extracting the data**. First purchase in the table has two items in the cart and its total price. From such information it is not clear what is the price of _each item_. Was any item purchased _with discount_? There is no easy way to count _total number of items_ in the cart, etc.
+3. **problems with removing data**. Once again, let's consider a first row with two items. What if customer decided to return one item, what should we do? Remove it from this row somehow? Or implement a special status with a new record for refunded products?
 
-All such problems appear because such representation of the data is called **denormalized**. It is a very essential structure for humans: easy to read, every field has descriptive names, orders are sorted in time, every row has full information about the order, etc. But it is not efficient for computers :
+All such problems appear because such representation of the data is called **denormalized**. It is a very essential structure for humans: easy to read, every field has descriptive names, orders are sorted in time, every row has full information about the purchase, etc. But it is not efficient for computers:
 - data is duplicated
 - some of the fields (for example user's name) are not (much) relevant to the purchase log
 - it may be slow to find/change/remove needed data if the log is pretty long
@@ -89,16 +89,16 @@ That's why in relational databases we store data in a **normalized form**.
 Normalization helps us:
 1. **Simplify** the data structure - by splitting the data into smaller parts we now can easily see how those parts are combined into a bigger system
 2. **Reduce errors** - during write we lookup into relations and can spot an error during writing
-3. **Reduce redundancy** of the data
-4. **Reduce the DB size**
+3. **Minimize redundancy** of the data
+4. **Reduce DB size**
 5. Enforce **data consistency** via relations
 
 <img src="img/fig-4b.png" alt="Data normalization"/>
 
 In our example, new structure gives us a few perks:
-1. we now have constrains about the data structure (enforce data simplification and quality)
+1. now we have constrains about the data structure (enforce data simplification and quality)
 2. we can have purchases only from existing users and for existing products (enforce data consistency)
-3. fact table (in our case `purchases`) have only links to other tables, but not the values of this data (reducing the amount of stored data)
+3. fact table (in our case `purchases`) have only links to values in other tables, but not the values itself (reducing the amount of stored data)
 4. if we want to add new purchase we create a record in `purchases` table and do not touch other tables; if we want to update customer's info we update it in `customers` tables and do not touch other tables (easier to maintain)
 
 ### Normalization tips
@@ -106,6 +106,7 @@ In our example, new structure gives us a few perks:
 <img src="img/fig-5a.png" alt="Data normalization tips"/>
 
 It is worth mentioning that there are a lot of [levels of normalization](https://en.wikipedia.org/wiki/Database_normalization). I'm leaving exploring the differences to the reader, but will give you a few tips how to normalize denormalized table:
+
 1. **Avoid nesting of several entities in a single cell** (e.g. Purchased products in my example). Can be fixed by implementing external table with relations.
 2. **Avoid data duplication within a single column**. Can be fixed by extracting such data to another table and referencing it in original table (in the next section we will talk about external keys).
 3. **Avoid data redundancy**. Drop all the fields which can be obtained through connected table. For example, customer's email and name are redundant fields in Purchases table if this table has `customer_id` reference to Customers table.
@@ -121,7 +122,7 @@ In its simplest form, _primary key_ is **unique, usually increasing sequence of 
 
 <img src="img/fig-6.png" alt="Example of customers table"/>
 
-Now, for table `orders`, field `customer_id` becomes a **foreign key**, because it is references a primary key from another table (in our case `customers`).
+Now, for table `orders`, field `customer_id` becomes a **foreign key**, because it references a primary key from another table (in our case `customers`).
 
 <img src="img/fig-7.png" alt="Orders-Customers relation"/>
 
@@ -129,29 +130,29 @@ Make a note that those fields in two tables don't have to be named the same. For
 
 ### Indexes
 
-When you want to find some record(s) in the table, DB needs to scan through all its values in order to find row(s) matching your criteria. Of course, the more records you have in your table, the more time it is needed to scan through all of them to find what you are looking for.
+When you want to find some record(s) in the table, DB needs to scan through all its values in order to find rows matching your criteria. Of course, the more records you have in your table, the more time it is needed to scan through all of them to find what you are looking for.
 
-**Index** is a solution which allows us to quickly search through the table rows with provided conditions.
+**Index** is a solution which allows us to quickly search through the table with provided conditions.
 
-The closest example of an index from real-life is _indexes in a book_. There index is a list of words or phrases and their associated locations. In order to find needed term you can either leaf through all pages until you find it or or open an index and find needed page immediately.
+The closest example of an index from real life is _indexes in a book_. There, index is a list of words or phrases and their associated locations. In order to find needed term you can either leaf through all pages until you find it or open an index and find needed page immediately.
 
 <img height="200" src="img/fig-8a.png" alt="Indexes in books"/>
 
 Indexes in databases work in a very similar fashion.
 
-**Index for a table is kind of a separated entity**. The table with original data does not depend on its index, actually it is the other way around, index depends on the content of your table. You can create, delete and re-create index for the table. Index is a separate table with keys (which are based on columns content) and pointers to those keys in data table.
+**Index for a table is kind of a separated entity**. The table with original data does not depend on its index, actually it is the other way around, index depends on the content of your table. You can create, delete and re-create index for the table. Index is a separate table with keys (based on column's content) and pointers to those keys in the table.
 
-Indexes can be created for any field of your table and they are based on a column's content. Each time you make a search using an indexed field, database will first search through the index structure, and after it will perform a look-up in the table itself.
+Indexes can be created for any field of your table and they are based on a column's values. Each time you make a search using an indexed field, database will first search through the index structure, and after that it will perform a lookup in the table itself.
 
 <img src="img/fig-9.png" alt="Indexes for a table example"/>
 
-Indexes in databases are saved in a form of a **b-tree structure**. B-tree is a sorting algorithm allowing you quickly search through a set of values. You don't need to understand at this point how this algorithm is working, it's not a point of this chapter. But you need to understand the capabilities this structure is giving to you. You can easily search for a single value, a range of values, min and max values, achieve quick sorting.
+Indexes in databases are saved in a form of a **b-tree structure**. B-tree is a sorting algorithm allowing you quickly search through a set of values. You don't need to understand how this algorithm is working, it's not a point of this chapter. But you need to understand the capabilities this structure is giving you. You can easily search for a single value, a range of values, min and max values, achieve quick sorting.
 
 <img src="img/fig-10.png" alt="Querying the indexed field"/>
 
 One might say "hey, if index allows us quick search, why not build an index for _every column_ in the table"? While tempting, it won't give you a performance gain because each time you add new values to you table you need to re-calculate the index (it's a tree, remember?). In the end, re-calculating indexes will take a lot of time so you will end-up with performance degradation.
 
-**Primary key is usually indexed by default**. This allows you not only have a unique key for your records, but also for quick search using it.
+**Primary key is indexed by default**. This allows to perform quick searches using primary keys.
 
 Every database has it's own implementation of indexes, so make sure you read the documentation for you DB if you want to achieve maximum efficiency with your queries.
 
@@ -162,6 +163,7 @@ Read more about indexes [here](https://www.startdataengineering.com/post/what-do
 <img src="img/fig-11.png" alt="Indexes gotchas"/>
 
 When using indexes pay attention to the following:
+
 - **overhead** for supporting indexes (when you insert a lot of data)
 - make sure your indexed data has **high cardinality** (it means the following: the more distinct values your column has, the more efficient index is; it won't be efficient if you have only binary True/False values, for example)
 - if you do a lot of deletions your index become **fragmented** (empty leafs) causing inefficiency
