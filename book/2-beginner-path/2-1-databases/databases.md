@@ -21,17 +21,17 @@ What is **data**?
 
 <img src="img/fig-001.png" alt="From facts to data and information"/>
 
-We have a lot of facts and logs around us. But they are useless if we don't gather them. So, we need to somehow capture them, apply some structure and save them. Let's call **structured persisted facts** a _data_.
+We have a lot of facts and logs around us. But they are useless if we don't gather them. So, we need to somehow capture them, apply structure and save. Let's call **structured persisted facts** a _data_.
 
-Furthermore, let's call the place where we store our data a **database** (or DB for short). For any database we have a list of requirements:
+Furthermore, let's call a place where we store our data a **database** (or DB for short). For any database we have a list of requirements:
 - we should be able to save new data to DB
 - to read saved data back
 - delete and change saved data
-- analyze saved data
+- analyze/process saved data
 
 To help us with such requirements each database has a **DataBase Management System** (or DBMS). This is a system which "runs" the database and gives us tools to work with it.
 
-Now, having full control of our data we can transform it into **information**. Such information can be translated into some **knowledge** and subsequently into **value** for the company (though gaining insights and increasing company's profit).
+Now, having full control over our data we can transform it into **information**. Such information can be translated into **knowledge** and subsequently into **value** for the company (though gaining insights and increasing company's profit).
 
 ## Types of databases
 
