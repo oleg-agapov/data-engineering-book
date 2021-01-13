@@ -62,13 +62,15 @@ There are cases when _files could be a way_ of storing data (for example in arch
 
 Now let's talk about how to structure our data.
 
-First very obvious data structure is a **relational model**. It represents data as **tables** and **relations** among those tables.
+First very obvious data structure is a **relational model**. It represents data as **tables** and **relations** between tables.
 
 Every row in the table called a **record**, every column is called a **field**.
 
 <img height="200" src="img/fig-1.png"/>
 
-Now let's discuss a bit how we can fit out data into relational model. And I'd like to start from the example. Imagine that you have an online electronics store and you are saving every purchase to the table called "Purchase log". You want to store the date of purchase, customer's name, purchased products and total price. Suppose you have an Excel file with such information:
+Now let's discuss a bit how we can fit out data into relational model. Basically you need to represent your data in a tabular way. In other words, as a tables with connections. It will be easier to explain with example.
+
+Imagine that you have an online electronics store and you are saving every purchase to the table called "Purchase log". You want to store the date of purchase, customer's name, purchased products and total price. Suppose you have an Excel file with such information:
 
 <img src="img/fig-2.png" alt="Example of non-normalized data"/>
 
