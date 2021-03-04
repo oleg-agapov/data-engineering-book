@@ -39,7 +39,7 @@ There are many types of databases exists. Each type helps to solve some particul
 
 On a very high level, there are two major types of databases: **relational** and **non-relational**.
 
-**Relational databases** are databases which use relational model of data and were invented in 1970th. They use **relational database management systems** (RDBMS) to maintain a database and support (most of them) **SQL** (Structured Query Language) for managing data.
+**Relational databases** are databases which use relational model of data and were invented in 1970th. They use **relational database management systems** (RDBMS) to maintain a database and support (most of them) **SQL** language for managing data.
 
 In contrast, **non-relational databases** don't follow relational model (though they may use some parts of it) and have a special internal representation of the data. Because of variety of ways of storing the data, there is a variety of non-relational databases categories. Some of them we will discuss later in the chapter.
 
