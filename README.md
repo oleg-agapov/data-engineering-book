@@ -36,17 +36,6 @@ Lastly, if you know what exactly you want to learn then head to the [table of co
 - `2020-12-06`: Added section [Useful resources for Data Engineers](./book/1-introduction-to-data-engineering/1.3-useful-resources.md)
 - `2020-11-16`: First section [Intro to Data Engineering](./book/1-introduction-to-data-engineering/README.md) released
 
-## Table of content
-
-1. [Introduction to Data Engineering](./book/1-introduction-to-data-engineering/README.md)
-    1. [What is Data Engineering?](./book/1-introduction-to-data-engineering/1.1-what-is-data-engineering.md)
-    2. [Data Engineering Roadmap?](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md)
-2. [Beginner path](./book/2-beginner-path/README.md)
-    1. [Intro to databases](./book/2-beginner-path/2-1-databases/databases.md)
-    2. [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md)
-3. Big Data path
-4. Data Architect path
-
 ## Feedback
 
 If you have any feedback or other questions, please refer to [this form](https://docs.google.com/forms/d/e/1FAIpQLSeYSxyQcNyXIyQeD1DtR6q2zHO7heGGUQ36PqW--XdRL01Wqg/viewform).
