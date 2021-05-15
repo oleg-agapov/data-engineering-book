@@ -963,5 +963,5 @@ Also, any other feedback is appreciated via [this form](https://docs.google.com/
 
 ---
 
-[Table of content](https://github.com/oleg-agapov/data-engineering-book#table-of-content)
+[Table of content](/README.md)
 

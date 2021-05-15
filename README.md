@@ -4,6 +4,17 @@
 
 <img width="350" src="cover.png" alt="Data engineering book cover">
 
+## Table of content
+
+1. [Introduction to Data Engineering](./book/1-introduction-to-data-engineering/README.md)
+    1. [What is Data Engineering?](./book/1-introduction-to-data-engineering/1.1-what-is-data-engineering.md)
+    2. [Data Engineering Roadmap?](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md)
+2. [Beginner path](./book/2-beginner-path/README.md)
+    1. [Intro to databases](./book/2-beginner-path/2-1-databases/databases.md)
+    2. [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md)
+3. Big Data path
+4. Data Architect path
+
 ## About this book
 
 The book covers different aspects of Data Engineering, from basic topics like databases, SQL and ETL to advanced like data architecture and Big Data stacks.
@@ -32,14 +43,13 @@ Lastly, if you know what exactly you want to learn then head to the [table of co
     2. [Data Engineering Roadmap?](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md)
 2. [Beginner path](./book/2-beginner-path/README.md)
     1. [Intro to databases](./book/2-beginner-path/2-1-databases/databases.md)
-    2. [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-part-1.md)
+    2. [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md)
 3. Big Data path
 4. Data Architect path
 
 ## Feedback
 
 If you have any feedback or other questions, please refer to [this form](https://docs.google.com/forms/d/e/1FAIpQLSeYSxyQcNyXIyQeD1DtR6q2zHO7heGGUQ36PqW--XdRL01Wqg/viewform).
-
 
 ## About author
 
