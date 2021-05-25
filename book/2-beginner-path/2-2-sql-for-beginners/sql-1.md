@@ -13,6 +13,7 @@ In day-to-day work of Data Engineers it plays a very important role. It is used 
 ## So, how do you pronounce "SQL"?
 
 There are two ways:
+
 - pronounce it letter-by-letter like "ess que el"
 - or with a word "sequel"
 
@@ -36,6 +37,7 @@ The data is usually stored in databases. With help of SQL you will be able to:
 - update and delete data
 
 More rigor approach to define possibilities of SQL is to distinguish three classes of operations with data:
+
 1. SQL data statements (manipulating data)
 2. SQL schema statements (to define data structures)
 3. SQL transaction statements (to handle transactions, advanced topic)
@@ -59,6 +61,7 @@ Imagine you have a big Excel file with information about users of some service:
 <img src="img/fig-excel.png" alt="Excel data">
 
 You can do many operations with this data:
+
 - inspect the data, check existing columns, their values
 - calculate the number of rows (by looking at the number of last row or with formula)
 - find a specific user by name/surname
@@ -87,6 +90,7 @@ FROM users;
 ```
 
 Here what it means:
+
 1. `SELECT` is a required keyword, it instruct database that you want to retrieve data
 2. `*` is a wildcard, means that you want to extract all columns from the table (other options will explain later)
 3. `FROM` another keyword saying which table you want to query
@@ -102,9 +106,9 @@ There are a few lessons you need to learn before going further:
 1. Keywords are reserved words in SQL. It means that you won't be able to use that to name tables and columns (however it will depends on a database you are using). No worries if you don't know all of them, just pay attention to this fact.
 2. For SQL it is actually doesn't matter if you write keywords in upper- or lowercase (`SELECT` or `select`). But as a good rule, try to make all keywords uppercased and all the identifiers (name of tables and columns) in lowercase.
 3. Each complete SQL query ends with `;`. It means that you can split you query on multiple rows however you want, or write it on a single line:
-    ```sql
-    SELECT * FROM users;
-    ```
+   ```sql
+   SELECT * FROM users;
+   ```
 4. `SELECT` is a required keyword, you cannot skip it. `FROM` is also required when you selecting data from a table (however, in some databases it can be optional). And the order of these two commands is important. You cannot write `FROM` before `SELECT`!
 
 ## Selecting columns and limiting the result
@@ -114,12 +118,12 @@ A table in a database can be actually very huge (millions/billions of rows). So 
 A better option is to add `LIMIT` clause to it:
 
 ```sql
-SELECT * 
+SELECT *
 FROM users
 LIMIT 10
 ```
 
-This will return you first 10 records from the table. 
+This will return you first 10 records from the table.
 
 > `LIMIT` should always go as the very last clause, otherwise you will get an error.
 
@@ -133,7 +137,7 @@ LIMIT 10
 
 This query will return only three columns (`first_name`, `last_name`, `country`) and first 10 records.
 
-Sometimes you may need to create a new column witр a static value. In SQL you can easily do that:
+Sometimes you may need to create a new column with a static value. In SQL you can easily do that:
 
 ```sql
 SELECT
@@ -156,6 +160,7 @@ LIMIT 10
 ```
 
 After `WHERE` keyword you need to put a **condition of filtering**. In my example, the condition is:
+
 ```sql
 country = 'China'
 ```
@@ -226,7 +231,7 @@ A few eagle eyes of you spotted a new syntax here – comments!
 ```sql
 -- this is a single-line comment
 
-/* 
+/*
 this is a multi-line comment.
 it can go on few lines
 */
@@ -284,14 +289,14 @@ WHERE id >= 500
   OR country IN ('United States', 'Canada')
 ```
 
-But wait, how do you know in the example the precedence of conditions? 
+But wait, how do you know in the example the precedence of conditions?
 
 In databases, `AND` has higher priority than `OR` (just like a multiplication operation takes precedence over an addition operation). For example:
 
 ```sql
 SELECT first_name, last_name, country
 FROM users
-WHERE 
+WHERE
   first_name = 'John'
   OR
   first_name = 'Bella' AND country = 'Brazil'
@@ -304,7 +309,7 @@ If you find it hard to remember the order, you can use a trick – **round brac
 ```sql
 SELECT *
 FROM users
-WHERE 
+WHERE
   first_name = 'John'
   OR
   (first_name = 'Bella' AND country = 'Brazil')
@@ -368,7 +373,7 @@ This example will returns the same number of rows as `count(*)` syntax because c
 You can put several aggregation functions in the same query:
 
 ```sql
-SELECT 
+SELECT
   count(*),
   count(last_name)
 FROM users
@@ -379,7 +384,7 @@ so you can return multiple aggregations at the same time.
 Last thing about `count()` function is additional syntax with `distinct` keyword:
 
 ```sql
-SELECT 
+SELECT
   count(distinct first_name)
 FROM users
 ```
@@ -391,6 +396,7 @@ will return number of unique values in the column `first_name`.
 ## More functions: sum, min, max, avg
 
 Other popular aggregation functions are:
+
 - `sum()` calculates the sum of a provided column
 - `min()` returns minimal value
 - `max()` returns maximal value
@@ -411,14 +417,14 @@ FROM payments
 
 ## Math operations with columns
 
-Sometimes you may want to apply some math operations with different columns. 
+Sometimes you may want to apply math operations to the columns and get a transformed result back.
 
-One example would be calculating some business metrics that includes several aggregations, like "Average Revenue Per User". This metric is calculated as the sum of revenue divided by the number of unique users. 
+One example would be calculating some business metrics that includes several aggregations, like "Average Revenue Per User". This metric is calculated as the sum of revenue divided by the number of unique users.
 
 You can add, subtract, multiply and divide columns easily with SQL, in a very natural way:
 
 ```sql
-SELECT 
+SELECT
   sum(gross_revenue) / count(distinct user_id)
 FROM payments
 ```
@@ -426,19 +432,19 @@ FROM payments
 Also, you can do it with non-aggregated columns as well. It will does the operation element-wise (meaning will be applied to each row individually):
 
 ```sql
-SELECT 
+SELECT
   gross_revenue * tax_rate - 0.30
 FROM payments
 ```
 
 ## Aliasing
 
-One thing may bother you during this chapter: after applying the aggregation,  the column names are weird. You can easily fix that with **aliases**.
+One thing may bother you during this chapter: after applying the aggregation, the column names are weird. You can easily fix that with **aliases**.
 
 Alias will rename the output column to the desired name. It is possible to give aliases to tables as well (it will be useful later, however). Use keyword `AS` for applying alias:
 
 ```sql
-SELECT 
+SELECT
   sum(gross_revenue) / count(distinct user_id) as avg_revenue_per_user
 FROM payments
 ```
@@ -446,7 +452,7 @@ FROM payments
 Aliases cannot have spaces and starting with a number. However, if you really need to do so, just wrap the alias in double quotes (e.g. `"Avg Revenue per User"`)
 
 ```sql
-SELECT 
+SELECT
   sum(gross_revenue) / count(distinct user_id) as "Avg Revenue per User"
 FROM payments
 ```
@@ -456,7 +462,7 @@ FROM payments
 Similarly, you can alias tables and reference columns names by that alias:
 
 ```sql
-SELECT 
+SELECT
   u.id, -- calling a column "id" by table alias
   u.email
 FROM users as u -- alias "users" table as "u"
@@ -516,20 +522,21 @@ Going back to discussed earlier use case, you want to know how many users you ha
 The syntax is following:
 
 ```sql
-SELECT 
-  country, 
+SELECT
+  country,
   count(id) as count_users
 FROM users
 GROUP BY country
 ```
 
 Now, step by step:
-1. After `SELECT` statement you define two things: 
-    - grouping column(s) (`country` in our case)
-    - aggregation function(s) (`count(id)` in our case)
+
+1. After `SELECT` statement you define two things:
+   - grouping column(s) (`country` in our case)
+   - aggregation function(s) (`count(id)` in our case)
 2. add `GROUP BY` statement at the bottom with columns, over which we are grouping our data (e.g. `country`)
 
-You add more than one columns for grouping, just put the same columns to `GROUP BY` statement. Also, you can add as many aggregation functions as you like.
+You can add more than one columns to grouping, just put the same columns to `GROUP BY` statement. Also, you can add as many aggregation functions as you like.
 
 ## Grouping with filters
 
@@ -538,9 +545,9 @@ In SQL you actually can mix grouping and filtering.
 Let's modify our previous example with countries split by filtering only users with `@bing.com` accounts:
 
 ```sql
-SELECT 
-  country, 
-  count(id) as gmail_users
+SELECT
+  country,
+  count(id) as bing_users
 FROM users
 WHERE email LIKE '%@bing.com'
 GROUP BY country
@@ -549,6 +556,7 @@ GROUP BY country
 As you can see, you can easily mix `GROUP BY` and `WHERE` statements to achieve more precise information.
 
 Pay attention to the _order of statement_:
+
 1. `SELECT` is always first
 2. then `FROM`
 3. `WHERE` is always after `FROM`
@@ -565,7 +573,7 @@ Ordering can be done via `ORDER BY` statement:
 ```sql
 -- will be sorted by country name alphabetically
 SELECT
-  country, 
+  country,
   count(id) as count_users
 FROM users
 GROUP BY country
@@ -580,7 +588,7 @@ GROUP BY country
 ORDER BY count_users;
 
 -- you can specify descending order by adding DESC keyword.
--- such query represents "top 10 countries by registered users" 
+-- such query represents "top 10 countries by registered users"
 -- because it has LIMIT statement
 SELECT
   country,
@@ -592,24 +600,26 @@ LIMIT 10;
 ```
 
 A few things to know about `ORDER BY` statement:
+
 - it can be used _without_ `GROUP BY` statement. Can be useful if you need a list of entries of the table sorted by some column
 - in conjunction with grouping, `ORDER BY` should always go after `GROUP BY`
 - for aggregated columns you can use aliases. However it not a problem to put the aggregation function instead:
-    ```sql
-    ORDER BY count(id)
-    ```
+  ```sql
+  ORDER BY count(id)
+  ```
 - `ORDER BY` statement can take more then one column for sorting:
-    ```sql
-    ORDER BY first_name
-           , last_name
-           , country DESC
-    ```
+  ```sql
+  ORDER BY first_name
+         , last_name
+         , country DESC
+  ```
 
 ## Conditions on aggregated column
 
 Last thing you may want from grouping is to have ability to filter by _aggregated values_.
 
 For example, let's find users with unique first name. To do that you need:
+
 1. group the `users` table by `first_name` column
 2. count the number of each name
 3. filter only rows where count of users for a name is equal to 1
@@ -638,10 +648,10 @@ By the time of reading this section you are probably overwhelmed with the number
 To help you with that I've prepared a _template_ which should give a bird view on all statements and their connection:
 
 ```sql
-SELECT 
-  /* [Required] one or more columns and aggregations */ 
+SELECT
+  /* [Required] one or more columns and aggregations */
 
-FROM   
+FROM
   /* [Required] table name */
 
 WHERE
@@ -665,6 +675,7 @@ LIMIT
 When working with data in table format (like Excel file or table in database) you often need to somehow transform the data to get new formats.
 
 Here is a few examples of transformations you may need:
+
 - join `first_name` and `last_name` to a single `full_name` column
 - apply math transformations, for example apply exchange rate for prices or calculate tax based on gross values
 - extract year from a date column
@@ -698,42 +709,44 @@ FROM users
 ```
 
 A few more use-cases:
+
 - turning a column to lowercase is a nice trick to compare two strings:
-    ```sql
-    -- finding all John-s in userbase.
-    -- because users may save their names written differently
-    -- ("John", "JOHN", "JoHn")
-    SELECT
-      count(first_name)
-    FROM users
-    WHERE lower(first_name) = 'john'
-    ```
+
+  ```sql
+  -- finding all John-s in userbase.
+  -- because users may save their names written differently
+  -- ("John", "JOHN", "JoHn")
+  SELECT
+    count(first_name)
+  FROM users
+  WHERE lower(first_name) = 'john'
+  ```
 
 - you can mix column functions, e.g:
-    ```sql
-    SELECT
-      length(lower(first_name) || lower(last_name)) as full_name_length
-    FROM users
-    ```
-  
+  ```sql
+  SELECT
+    length(lower(first_name) || lower(last_name)) as full_name_length
+  FROM users
+  ```
 - use column functions with grouping:
-    ```sql
-    -- let's find all users with unique full names
-    -- to do that we need first aggregate all users by full names
-    -- and then apply HAVING to find only single ocurrences
-    SELECT
-      first_name || ' ' || last_name as full_name,
-      count(id) as count_users
-    FROM users
-    GROUP BY first_name || ' ' || last_name
-    HAVING count_users = 1
-    ```
+  ```sql
+  -- let's find all users with unique full names
+  -- to do that we need first aggregate all users by full names
+  -- and then apply HAVING to find only single ocurrences
+  SELECT
+    first_name || ' ' || last_name as full_name,
+    count(id) as count_users
+  FROM users
+  GROUP BY first_name || ' ' || last_name
+  HAVING count_users = 1
+  ```
 
 ## Math functions
 
 **Math functions** allows you apply some math transformation to your data.
 
 We already saw some useful math functions in [aggregations section](#Aggregations):
+
 - `count()`
 - `sum()`
 - `min()`
@@ -743,6 +756,7 @@ We already saw some useful math functions in [aggregations section](#Aggregation
 > Remember all 5 functions above are applicable only when aggregating data or grouping data
 
 Other useful math functions are:
+
 - `round(number, precision)` – rounds a number to a specified number of decimal places (precision)
 - `sqrt()` – returns a square root of the number
 - `power(a, b)` – raises `a` to the poser of `b`. Here `a` and `b` could be either numbers or columns
@@ -750,6 +764,7 @@ Other useful math functions are:
 Lastly, usual math operations like `+`, `-`, `*`, `/` work well with both numbers and columns.
 
 Example:
+
 ```sql
 SELECT
   round(gross_revenue * (1 - tax_rate), 2) as net_profit
@@ -763,12 +778,13 @@ In many situations you need to work with dates and time. For example, create a d
 > In different databases date functions may have different names and meaning! Please refer to the documentation of your database when working with dates.
 
 Here is a list of some date functions in SQLite database:
+
 ```sql
 /* SQLite database */
 
 SELECT
   reg_date -- original date
-  
+
   -- truncate datetime to format YYYY-MM-DD
   , date(reg_date)
 
@@ -799,11 +815,11 @@ In the following query I'll show how to do similar operations with data in MySQL
 
 SELECT
   reg_date -- original date
-  
+
   -- convert date or string to format YYYY-MM-DD
   , date(reg_date)
   , date('2021-01-01')
-  
+
   -- date with time
   , timestamp('2021-01-01 23:59:59')
 
@@ -815,7 +831,7 @@ SELECT
   , reg_date + INTERVAL 1 DAY as next_day
   , reg_date - INTERVAL 1 MONTH as month_ago
 
-  -- difference between two dates in days 
+  -- difference between two dates in days
   -- (whole days, without fraction of the day)
   , datediff('2021-01-01', reg_date)
 FROM users
@@ -842,6 +858,7 @@ Last portion of column functions I'm going to show are the **conditional functio
 Function `coalesce(column_1, column_2, ...)` takes two or more arguments (columns or other values like strings, numbers) and return first non-NULL argument.
 
 Principle of work:
+
 - check if _first_ argument is NULL. if yes, go to the next step, otherwise return the argument
 - check if _second_ argument is NULL. if yes, go to the next step, otherwise return the argument
 - and so on
@@ -859,8 +876,9 @@ FROM payments
 Case statement is a conditional function which can check multiple conditions and act corresponding to those condition.
 
 Basic syntax of `case` statement is following:
+
 ```sql
-case 
+case
 
   when /* condition 1 */ -- (required)
     then /* returned value if condition 1 is truthy */
@@ -869,7 +887,7 @@ case
     then /* returned value if condition 2 is truthy */
 
   /* more "when" branches if needed */
-  
+
   else -- (optional)
     /* returned value if none of the conditions are truthy */
 
@@ -920,6 +938,7 @@ FROM users
 This time let's count the number of users registered this year, last year and all the rest.
 
 Do do so let's use CASE statement and create a new column with the following conditions:
+
 - if user registered this year return string 'Registered this year'
 - if user registered in previous year return string 'Registered last year'
 - in all other cases return 'All the rest'
@@ -938,11 +957,11 @@ SELECT
     -- to find previous year I subtract 1 year from current timestamp
     when strftime('%Y', reg_date) = strftime('%Y', date(current_timestamp, '-1 year'))
       then 'Registered last year'
-    
+
     -- lastly, if no conditions were satisfied, return ELSE statement
     else 'Registered more then two years ago'
   end as registration_period
-  
+
   , count(1)
 FROM users
 GROUP BY registration_period
@@ -950,10 +969,9 @@ GROUP BY registration_period
 
 > CASE statement is evaluated top to bottom. It means that if at least one condition was met, it will stop evaluating other conditions and will return the value from `then` block.
 
-
 # Summary
 
-Congratulations, you've done with SQL basics and now can do a lot with data! 
+Congratulations, you've done with SQL basics and now can do a lot with data!
 
 In this chapter we've discovered many topics, from basic selecting and filtering, to more advanced aggregations and groupings.
 
@@ -964,4 +982,3 @@ Also, any other feedback is appreciated via [this form](https://docs.google.com/
 ---
 
 [Table of content](/README.md)
-
