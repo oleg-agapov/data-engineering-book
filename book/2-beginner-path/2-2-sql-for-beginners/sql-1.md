@@ -429,7 +429,7 @@ SELECT
 FROM payments
 ```
 
-Also, you can do it with non-aggregated columns as well. It will does the operation element-wise (meaning will be applied to each row individually):
+Also, you can do it with non-aggregated columns as well. It will do the operation element-wise (meaning will be applied to each row individually):
 
 ```sql
 SELECT
@@ -725,7 +725,7 @@ A few more use-cases:
 - you can mix column functions, e.g:
   ```sql
   SELECT
-    length(lower(first_name) || lower(last_name)) as full_name_length
+    length(lower(first_name) || ' ' || lower(last_name)) as full_name_length
   FROM users
   ```
 - use column functions with grouping:
