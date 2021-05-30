@@ -542,14 +542,14 @@ You can add more than one columns to grouping, just put the same columns to `GRO
 
 In SQL you actually can mix grouping and filtering.
 
-Let's modify our previous example with countries split by filtering only users with `@bing.com` accounts:
+Let's modify our previous example with countries split by filtering only users with `@gmail.com` accounts:
 
 ```sql
 SELECT
   country,
-  count(id) as bing_users
+  count(id) as gmail_users
 FROM users
-WHERE email LIKE '%@bing.com'
+WHERE email LIKE '%@gmail.com'
 GROUP BY country
 ```
 
