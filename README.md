@@ -1,5 +1,7 @@
-# Data Engineering Book [Work In Progress 🚧]
+# Data Engineering Book 
 
+🚧 Work In Progress 🚧
+ 
 > _Accumulated knowledge and experience in the field of Data Engineering_
 
 <img width="350" src="cover.png" alt="Data engineering book cover">
