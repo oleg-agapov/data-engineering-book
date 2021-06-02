@@ -12,6 +12,7 @@
 1. [Introduction to Data Engineering](./book/1-introduction-to-data-engineering/README.md)
     1. [What is Data Engineering?](./book/1-introduction-to-data-engineering/1.1-what-is-data-engineering.md)
     2. [Data Engineering Roadmap?](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md)
+    3. [Useful resources for Data Engineers](./book/1-introduction-to-data-engineering/1.3-useful-resources.md)
 2. [Beginner path](./book/2-beginner-path/README.md)
     1. [Intro to databases](./book/2-beginner-path/2-1-databases/databases.md)
     2. [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md)
