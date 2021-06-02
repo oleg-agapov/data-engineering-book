@@ -1,7 +1,8 @@
 # Data Engineering Book 
 
-🚧 Work In Progress 🚧
- 
+<img src="https://img.shields.io/badge/Status-Work_in_progress-yellow">
+
+
 > _Accumulated knowledge and experience in the field of Data Engineering_
 
 <img width="350" src="cover.png" alt="Data engineering book cover">
