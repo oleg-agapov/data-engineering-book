@@ -30,7 +30,7 @@ If you are an absolute novice – start with [introduction to Data Engineering]
 
 If you already decided to learn data engineering, but don't know where to start – head on to the [Data Engineering roadmap](./book/1-introduction-to-data-engineering/1.2-data-engineering-roadmap.md). There I show three paths you can take, from absolute beginner to advanced levels.
 
-Lastly, if you know what exactly you want to learn then head to the [table of content](#table-of-content) down below and find the most interesting topics for you.
+Lastly, if you know what exactly you want to learn then head to the [table of content](#table-of-content) and find the most interesting topics for you.
 
 ## Updates
 - `2021-05-15`: Re-write of [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md) chapter so it has more content and is much informative
