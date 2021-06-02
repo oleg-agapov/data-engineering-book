@@ -555,7 +555,7 @@ GROUP BY country
 
 As you can see, you can easily mix `GROUP BY` and `WHERE` statements to achieve more precise information.
 
-Pay attention to the _order of statement_:
+Pay attention to the _order of statements_:
 
 1. `SELECT` is always first
 2. then `FROM`
@@ -579,7 +579,7 @@ FROM users
 GROUP BY country
 ORDER BY country;
 
--- will be sorted by number if users ascending
+-- will be sorted by the number of users ascending
 SELECT
   country,
   count(id) as count_users
