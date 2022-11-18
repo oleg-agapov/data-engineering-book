@@ -4,7 +4,7 @@ For the best experience of readers I prepared a small database and tutorial that
 
 All queries I show in [SQL for beginners](sql-1.md) chapter are real. It means that you can run them yourself using provided database.
 
-> The data is fake. At the end of the tutorial I put a generation script.
+> The data is fake. At the end of the tutorial I'll put a generation script.
 
 To connect to that database I recommend using a real IDE tool called DBeaver.
 

@@ -34,6 +34,7 @@ If you already decided to learn data engineering, but don't know where to start 
 Lastly, if you know what exactly you want to learn then head to the [table of content](#table-of-content) and find the most interesting topics for you.
 
 ## Updates
+- `2022-11-18`: Added [Advanced SQL](./book/2-beginner-path/2-2-sql-for-beginners/sql-2.md) chapter
 - `2021-05-15`: Re-write of [SQL for beginners](./book/2-beginner-path/2-2-sql-for-beginners/sql-1.md) chapter so it has more content and is much informative
 - `2021-03-02`: Added "SQL for beginners"
 - `2021-01-10`: Added [Intro to databases](./book/2-beginner-path/2-1-databases/databases.md)
@@ -46,7 +47,7 @@ If you have any feedback or other questions, please refer to [this form](https:/
 
 ## About author
 
-My name is **Oleg Agapov** and I'm a data analyst.
+My name is **Oleg Agapov** and I'm a BI and Analytics Engineer.
 
 I work with data, analytics, engineering and sometimes magic ✨
 
@@ -56,4 +57,4 @@ I work with data, analytics, engineering and sometimes magic ✨
 
 You may freely copy and distribute portions of this book as long as you give appropriate credit and indicate if changes were made. You cannot use this book for any commercial purpose.
 
-Copyright ©2020 Oleg Agapov.
+Copyright ©2020-2022 Oleg Agapov.
